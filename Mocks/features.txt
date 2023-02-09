@@ -1,0 +1,5 @@
+Its a mock test to validate a csv file
+
+The file should have id, name, profession and age fields
+The file shouldn't be empty
+The file shouldn't be longer than 4 lines including the headers
