@@ -16,17 +16,12 @@ class File{
     }
 
     static async getFileContent(filePath){
-        const fileName = join(__dirname, filePath)
-        return (await readFile(fileName)).toString("utf-8")
+        return (await readFile(filePath)).toString("utf-8")
     }
 
     static isValid(csvString, options = FILE_DEFAULT_CONFIGS){
         const [header,...fileWithoutHeader] = csvString.split('\n')
         const isHeaderValid = header === options.fields.join(',') 
-        console.log("isHeaderValid", isHeaderValid);
-        console.log("header", header);
-        console.log("ptions.fields.join(',')", options.fields.join(','));
-
 
         if(!isHeaderValid){
             return {
@@ -36,7 +31,7 @@ class File{
         }
 
         const isContentLengthValid = (
-            fileWithoutHeader.length >= 0 &&
+            fileWithoutHeader.length > 0 &&
             fileWithoutHeader.length <= options.maxLines
         )
 
@@ -51,6 +46,10 @@ class File{
 
         
     }
+
+    static parseCsvToJson(cvsString){
+        // 18:50
+    }
 }
 
-module.exports = File
+module.exports =  File
