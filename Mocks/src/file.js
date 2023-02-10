@@ -47,16 +47,10 @@ class File{
             }
         }
 
+        return {valid:true}
 
         
     }
 }
-(async()=>{
-    try {
-        const result = await File.csvToJson("./../mocks/fiveItems-invalid.csv")
-    } catch (error) {
-        console.log('Error: ', error)     
-    }
-   
-    
-})();
+
+module.exports = File
